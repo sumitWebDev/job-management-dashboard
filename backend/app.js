@@ -9,7 +9,10 @@ const bodyParser = require('body-parser');
 var errorHandler = require('./middleware/error');
 const cors = require('cors');
 const cookieParser = require( "cookie-parser" );
+
+//import routes
 const authRoutes = require('./routes/authRoutes');
+const jobRoutes = require('./routes/jobsRoutes');
 
 //database connection
 mongoose.connect(process.env.DATABASE,{
@@ -31,7 +34,7 @@ app.use(cors());
 
 //Route Middleware
 app.use('/api',authRoutes)
-
+app.use('/api',jobRoutes)
 
 //Error Middleware
 app.use(errorHandler);

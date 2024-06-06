@@ -8,23 +8,23 @@ const jobSchema = new mongoose.Schema({
         required: [true, 'Title is required'],
         maxlength:70
     },
-    description:{
-        type:String,
-        trim:true,
-        required: [true, 'Description is required']
-    },
-    salary:{
-        type:String,
-        trim:true,
-        required: [true, 'Salary is required']
-    },
-    location:{
-        type:String,
-    },
-    available:{
-        type:Boolean,
-        default: true
-    },
+    // description:{
+    //     type:String,
+    //     trim:true,
+    //     required: [true, 'Description is required']
+    // },
+    // salary:{
+    //     type:String,
+    //     trim:true,
+    //     required: [true, 'Salary is required']
+    // },
+    // location:{
+    //     type:String,
+    // },
+    // available:{
+    //     type:Boolean,
+    //     default: true
+    // },
 },{timestamps:true})
 
-module.exports = mongoose.model("Job",jobSchema)
+module.exports = mongoose.model("job",jobSchema)
