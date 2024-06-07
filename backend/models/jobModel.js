@@ -2,29 +2,26 @@ const mongoose = require('mongoose');
 
 
 const jobSchema = new mongoose.Schema({
-    title:{
+    customerName:{
         type:String,
         trim:true,
-        required: [true, 'Title is required'],
-        maxlength:70
+        required: [true, 'Customer Name is required']
     },
-    // description:{
-    //     type:String,
-    //     trim:true,
-    //     required: [true, 'Description is required']
-    // },
-    // salary:{
-    //     type:String,
-    //     trim:true,
-    //     required: [true, 'Salary is required']
-    // },
-    // location:{
-    //     type:String,
-    // },
-    // available:{
-    //     type:Boolean,
-    //     default: true
-    // },
+    jobType:{
+        type:String,
+        trim:true,
+        required: [true, 'Job Type is required']
+    },
+    status:{
+        type:String,
+        trim:true,
+        required: [true, 'Status is required']
+    },
+    technician:{
+        type:String,
+        trim:true,
+        required: [true, 'Technician name is required']
+    },
 },{timestamps:true})
 
 module.exports = mongoose.model("job",jobSchema)
