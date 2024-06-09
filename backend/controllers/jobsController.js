@@ -3,6 +3,7 @@ const ErrorResponse = require('../utils/errorResponse');
 
 //create jobs
 exports.createJob = async(req,res,next) =>{
+    console.log(req)
     try{
         const jobDetails = await job.create({
             customerName: req.body.customerName,
