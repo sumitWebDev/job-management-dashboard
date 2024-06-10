@@ -15,7 +15,7 @@ npm version - 10.8.0
 - Navigate to frontend folder
 - Run npm i
 - Run npm start
-- 
+- URL for frontend : http://localhost:3001
 
 #### API Documentation
 
