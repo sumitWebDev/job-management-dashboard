@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![Test Image 4] (Application1.png)
+![Test Image 4] (https://github.com/sumitWebDev/job-management-dashboard/blob/master/screenshots/Application1.png)
 
 ## Available Scripts
 
