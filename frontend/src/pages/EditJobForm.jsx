@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Navbar from '../components/Navbar';
+import { FormControl, FormLabel } from '@mui/material';
+import Container from '@mui/material/Container';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
-const NewJobForm = ()=> {
+
+const EditJobForm = ()=> {
   const [form, setForm] = useState({
     customerName: "",
     jobType: "",
@@ -50,13 +56,16 @@ const NewJobForm = ()=> {
     const person = { ...form };
     try {
       let response;
-    //  if we are updating a record we will PATCH to /record/:id.
+      if (person.customerName && person.jobType && person.status && person.technician) {
         response = axios.put(`http://localhost:3000/api/jobs/update/${params.id}`, {
           customerName: person.customerName,
           jobType: person.jobType,
           status: person.status,
           technician:person.technician
         });
+      }else{
+        alert("Please insert all the values")
+      }
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -64,17 +73,20 @@ const NewJobForm = ()=> {
     } catch (error) {
       console.error('A problem occurred with your fetch operation: ', error);
     } finally {
-      setForm({ customerName: "", jobType: "", status: "",technician:""  });
-      navigate("/");
+      if (person.customerName && person.jobType && person.status && person.technician) {
+        setForm({ customerName: "", jobType: "", status: "",technician:""  });
+        navigate("/");
+      }else{
+        navigate(`/update/${params.id}`);
+      }
     }
   }
 
   // This following section will display the form that takes the input from the user.
   return (
     <>
-    {console.log(form)}
-      <h3 className="text-lg font-semibold p-4">Create Employee Record</h3>
-      <form
+    <Navbar />
+      {/* <form
         onSubmit={onSubmit}
         className="border rounded-lg overflow-hidden p-4"
       >
@@ -183,9 +195,27 @@ const NewJobForm = ()=> {
           value="Save Employee Record"
           className="inline-flex items-center justify-center whitespace-nowrap text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-slate-100 hover:text-accent-foreground h-9 rounded-md px-3 cursor-pointer mt-4"
         />
-      </form>
+      </form> */}
+      <Container maxWidth="lg">
+      <h3 className="text-lg font-semibold p-4">Update Employee Record</h3>
+      <FormControl onSubmit={onSubmit}>
+            <FormLabel>Customer Name</FormLabel>
+            <TextField value={form.customerName} error={true} label="Enter value"
+                    onChange={(e) => updateForm({ customerName: e.target.value })}></TextField>
+            <FormLabel>Job Type</FormLabel>
+            <TextField value={form.jobType} error={true}
+                    onChange={(e) => updateForm({ jobType: e.target.value })}></TextField>
+            <FormLabel>Status</FormLabel>
+            <TextField value={form.status} error={true}
+                    onChange={(e) => updateForm({ status: e.target.value })}></TextField>
+            <FormLabel>Technician</FormLabel>
+            <TextField value={form.technician} error={true}
+                    onChange={(e) => updateForm({ technician: e.target.value })}></TextField>
+            <Button onClick={onSubmit}>Submit</Button>
+        </FormControl>
+      </Container>
     </>
   );
 }
 
-export default NewJobForm;
+export default EditJobForm;
