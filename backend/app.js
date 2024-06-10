@@ -11,7 +11,6 @@ const cors = require('cors');
 const cookieParser = require( "cookie-parser" );
 
 //import routes
-const authRoutes = require('./routes/authRoutes');
 const jobRoutes = require('./routes/jobsRoutes');
 
 //database connection
@@ -33,7 +32,6 @@ app.use( cookieParser() );
 app.use(cors());
 
 //Route Middleware
-app.use('/api',authRoutes)
 app.use('/api',jobRoutes)
 
 //Error Middleware
