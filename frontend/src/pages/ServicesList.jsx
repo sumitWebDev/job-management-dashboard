@@ -39,8 +39,7 @@ const ServicesList = ()=>{
        <>
        <Navbar />
        <Container maxWidth="lg">
-          <h1>Job Details</h1>
-          <Link to={'/newJob'}>Create New Job</Link>
+          <h2> <Link to={'/newJob'}>Create New Job</Link> </h2>
           <TableContainer>
             <Table sx={{ minWidth: 100 }} aria-label="simple table">
             <TableHead>
@@ -59,7 +58,7 @@ const ServicesList = ()=>{
                         {row.jobType}
                         </Grid>
                         <Grid item xs={3}>
-                        <Link to={row._id}>Details</Link>
+                        <Link to={`/job/${row._id}`}>Details</Link>
                         </Grid>
                         <Grid item xs={3}>
                         <Link to={`/update/${row._id}`}>Edit</Link>

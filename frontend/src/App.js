@@ -16,7 +16,7 @@ const App = ()=>{
           <BrowserRouter>
             <Routes>
               <Route path='/' element={<Home/>}></Route>
-              <Route path='/:id' element={<JobDetails/>}></Route>
+              <Route path='/job/:id' element={<JobDetails/>}></Route>
               <Route path='/update/:id' element={<EditJobFrom/>}></Route>
               <Route path='/newJob' element={<NewJobForm/>}></Route>
               <Route path='*' element={<NotFound/>}></Route>
