@@ -1,6 +1,9 @@
 # Job Management Dashboard Application
 ## A MERN Stack Web Application
 
+
+![Test Image 4] (https://github.com/sumitWebDev/job-management-dashboard/blob/master/screenshots/Application1.png)
+
 ### Set Up Instructions
 Node version - v18.17.1
 npm version - 10.8.0
